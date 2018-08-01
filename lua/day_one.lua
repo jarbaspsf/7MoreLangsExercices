@@ -41,6 +41,25 @@ function for_loop(a,b,f)
     end
 end
 
+function add(previous, next)
+    return previous + next
+end     
+
+function reduce(max, init, f)
+    if max == 0 then
+        return init
+    else
+        return reduce(max-1,  f(init, max), f)
+    end
+end
+
+function factorial(number)
+    local multyply = function(numberX, numberY)
+        return numberX * numberY
+    end
+    return reduce(number, 1, multyply)
+end    
+
 print("FIRST DAY EXERCICES")
 print("/***********************************************")
 print("                     EASY                       ")
@@ -74,3 +93,23 @@ print("*for_loop*")
 print("")
 print("Print 1 to 10 with for_loop function")
 for_loop(1,10, print)
+print("")
+print("/***********************************************")
+print("                     HARD                       ")
+print("***********************************************/")
+print("*reduce*")
+print("")
+print("Calling reduce(90, 0, add) ")
+print("")
+print(reduce(90,0,add))
+print("")
+print("*factorial*")
+print("")
+print("Calling factorial(6) ")
+print("")
+print(factorial(6))
+print("")
+print("Checking factorial(0) must be 1 ")
+print("")
+print(factorial(0))
+
